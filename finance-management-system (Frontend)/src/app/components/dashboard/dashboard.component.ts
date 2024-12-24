@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CurrencyPipe, CommonModule } from '@angular/common';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 interface BonusRequest {
   _id: string;
@@ -16,7 +17,7 @@ interface BonusRequest {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   standalone: true,
-  imports: [CurrencyPipe, CommonModule]
+  imports: [CurrencyPipe, CommonModule, NavbarComponent]
 })
 export class DashboardComponent implements OnInit {
   bonusRequests: BonusRequest[] = [];

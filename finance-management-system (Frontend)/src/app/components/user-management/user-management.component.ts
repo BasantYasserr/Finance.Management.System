@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../../navbar/navbar.component";
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.css'],
-  imports : [FormsModule , CommonModule]
+  imports: [FormsModule, CommonModule, NavbarComponent]
 })
 export class UserManagementComponent implements OnInit {
   showAddUserForm = false;

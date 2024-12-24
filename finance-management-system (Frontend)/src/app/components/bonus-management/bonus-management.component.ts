@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 
 interface BonusRequest {
@@ -22,7 +23,7 @@ interface ApprovalDetails {
   selector: 'app-bonus-management',
   templateUrl: './bonus-management.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, NavbarComponent]
 })
 export class BonusManagementComponent implements OnInit {
   bonusRequests: BonusRequest[] = [];
