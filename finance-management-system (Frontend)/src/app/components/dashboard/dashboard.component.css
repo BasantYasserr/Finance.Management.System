@@ -1,54 +1,165 @@
-/* تحسين الحواف والتباعد */
-.card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.card-body {
-  padding: 30px;
+/* الخطوط والتنسيق العام */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h3 {
   font-weight: bold;
 }
 
+h1 {
+  font-size: 3rem;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
 h3 {
   color: #007bff;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-/* تباعد بين العناصر */
-.mt-4 {
-  margin-top: 30px;
+/* التأثيرات الحركية الأساسية */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.mb-4 {
-  margin-bottom: 30px;
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
-/* تحسين تنسيق الجداول */
+.animate__fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate__delay-1s {
+  animation-delay: 1s;
+}
+
+.animate__bounceInDown {
+  animation: bounceInDown 1s ease-out;
+}
+
+.animate__zoomInUp {
+  animation: zoomInUp 0.8s ease-in-out;
+}
+
+.animate__pulse {
+  animation: pulse 2s infinite;
+}
+
+/* تدرجات لونية وتحسين الألوان */
+.bg-gradient-card {
+  background: linear-gradient(45deg, #4e73df, #224abe);
+  color: white;
+}
+
+/* البطاقات */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* التأثيرات عند التمرير */
+.card-header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #4e73df;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-body .table-responsive {
+  padding: 0;
+}
+
+/* الجداول */
 .table {
-  border-radius: 10px;
+  font-size: 1.1rem;
+  border-radius: 12px;
 }
 
 .table th, .table td {
-  padding: 15px;
+  padding: 20px;
   text-align: center;
 }
 
 .table-striped tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+  background-color: #f7f7f7;
 }
 
 .table-hover tbody tr:hover {
   background-color: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
 }
 
-/* تحسين الألوان */
+/* الأزرار */
+.btn-gradient-action {
+  background: linear-gradient(45deg, #28a745, #218838);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn-gradient-action:hover {
+  background: linear-gradient(45deg, #218838, #28a745);
+  transform: translateY(-3px);
+}
+
+/* تخصيص صفوف الجداول بحالة Rejected */
+.bg-danger {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+/* تخصيص لون النص داخل الصفوف عندما تكون الحالة Rejected */
+.table tbody .bg-danger td {
+  color: white;
+  font-weight: bold;
+}
+
+/* تحسين التنسيق */
+.table-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.table-dark th {
+  background-color: #4e73df;
+}
+
 .badge-success {
   background-color: #28a745;
 }
@@ -59,4 +170,34 @@ h3 {
 
 .badge-danger {
   background-color: #dc3545;
+}
+
+/* تأثيرات جديدة على الجدول */
+.table th, .table td {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* تأثيرات حركية على الرأس */
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  font-size: 3rem;
+  transition: all 0.4s ease;
+}
+
+.dashboard-header p {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.dashboard-header:hover h1 {
+  color: #4e73df;
+  transform: translateX(5px);
+}
+
+h1, h3 {
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }

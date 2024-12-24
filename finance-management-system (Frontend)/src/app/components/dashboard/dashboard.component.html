@@ -1,56 +1,74 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-12">
-      <h1 class="mt-4 mb-4 text-center text-primary">Dashboard</h1>
-      
-      <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-          <h4>Approved Bonuses Total</h4>
-        </div>
-        <div class="card-body text-center">
-          <h3>{{ totalBonuses | currency }}</h3>
-        </div>
+    <div class="col-12 col-md-10 mx-auto">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">
+        <h1 class="display-4 text-primary animate__animated animate__bounceInDown">Dashboard</h1>
+        <p class="lead text-muted animate__animated animate__fadeIn animate__delay-2s">Track your bonuses and requests with ease</p>
       </div>
 
-      <div class="mt-4">
-        <h3>Processed Bonus Requests</h3>
-        <div class="table-responsive">
-          <table class="table table-striped table-hover">
-            <thead class="table-dark">
-              <tr>
-                <th>Title</th>
-                <th>Reason</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Submission Date</th>
-                <th>Processing Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let request of bonusRequests">
-                <td>{{ request.title }}</td>
-                <td>{{ request.reason }}</td>
-                <td>{{ request.amount | currency }}</td>
-                <td>
-                  <span [class]="getStatusClass(request.status)">
-                    {{ request.status }}
-                  </span>
-                </td>
-                <td>{{ request.submissionDate | date:'short' }}</td>
-                <td>{{ request.processedDate | date:'short' }}</td>
-                <td>
-                  <button 
-                    *ngIf="request.status === 'approved'"
-                    class="btn btn-primary btn-sm"
-                    (click)="initiatePayment(request._id)">
-                    Pay Now
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="row">
+        <!-- Total Bonuses Card -->
+        <div class="col-12 col-md-6 mb-4">
+          <div class="card shadow-lg border-0 rounded-xl animate__animated animate__fadeIn animate__delay-3s">
+            <div class="card-header bg-gradient-card rounded-t-xl">
+              <h5 class="mb-0 animate__animated animate__slideInLeft">Approved Bonuses Total</h5>
+            </div>
+            <div class="card-body text-center">
+              <h3 class="font-weight-bold">{{ totalBonuses | currency }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Processed Bonus Requests Table -->
+        <div class="col-12">
+          <div class="card shadow-lg border-0 rounded-xl animate__animated animate__fadeIn animate__delay-4s">
+            <div class="card-header bg-gradient-card rounded-t-xl">
+              <h5 class="mb-0">Processed Bonus Requests</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped table-custom animate__animated animate__zoomInUp">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Title</th>
+                      <th>Reason</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Submission Date</th>
+                      <th>Processing Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let request of bonusRequests" 
+                        [ngClass]="{'bg-danger': request.status === 'rejected'}" 
+                        class="animate__animated animate__fadeIn animate__delay-1s">
+                      <td>{{ request.title }}</td>
+                      <td>{{ request.reason }}</td>
+                      <td>{{ request.amount | currency }}</td>
+                      <td>
+                        <span [ngClass]="getStatusClass(request.status)">
+                          {{ request.status }}
+                        </span>
+                      </td>
+                      <td>{{ request.submissionDate | date:'short' }}</td>
+                      <td>{{ request.processedDate | date:'short' }}</td>
+                      <td>
+                        <button 
+                          *ngIf="request.status === 'approved'"
+                          class="btn btn-gradient-action btn-sm animate__animated animate__pulse"
+                          (click)="initiatePayment(request._id)">
+                          Pay Now
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
